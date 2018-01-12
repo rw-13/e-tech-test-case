@@ -20,9 +20,10 @@ class DataHandler
     //Возвращает массив строк, отсортированных по шаблону
     public function searchLines() {
         $pattern = 'PAYMENT[0-6]{6}[A-Z]{2}';
+		$patternDate = '01\/09\/2017';
         $result = array();
         foreach ($this->data as $line) {
-            if (preg_match("/$pattern/", $line))
+            if (preg_match("/$pattern/", $line) && preg_match("/$patternDate/", $line))
                 $result[] = trim($line);
         }
         return $result;
